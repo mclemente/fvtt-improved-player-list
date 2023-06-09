@@ -1,12 +1,12 @@
 {
-	"id": "improvedPlayerList",
+	"id": "improved-player-list",
 	"title": "Improved Player List",
 	"description": "",
 	"version": "This is auto replaced",
 	"library": "false",
 	"manifestPlusVersion": "1.0.0",
 	"compatibility": {
-		"minimum": 10,
+		"minimum": 11.301,
 		"verified": 11
 	},
 	"authors": [
