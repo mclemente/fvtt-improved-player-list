@@ -2,6 +2,8 @@
 //
 // SPDX-License-Identifier: MIT
 
+import { libWrapper } from "./shim.js";
+
 Hooks.once("init", function () {
 	// Player List
 	libWrapper.register(
