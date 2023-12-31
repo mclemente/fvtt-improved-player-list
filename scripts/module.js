@@ -3,31 +3,6 @@
 // SPDX-License-Identifier: MIT
 
 class ImprovedPlayerList extends PlayerList {
-	getData(options={}) {
-		const users = game.users.filter((u) => this._showOffline || u.active).map((user) => {
-			const u = user.toObject(false);
-			const charname = user.isGM ? game.i18n.localize("USER.GM") : user.character?.name.split(" ")[0] || "";
-			const flag = user.flags["improved-player-list"]?.charname;
-
-			u.active = user.active;
-			u.isGM = user.isGM;
-			u.isSelf = user.isSelf;
-			u.charname = flag || charname;
-			u.color = u.active ? u.color : "#333333";
-			u.border = u.active ? user.border : "#000000";
-			u.displayName = this._getDisplayName(u);
-			return u;
-		}).sort((a, b) => {
-			if ( (b.role >= CONST.USER_ROLES.ASSISTANT) && (b.role > a.role) ) return 1;
-			return a.name.localeCompare(b.name);
-		});
-		return {
-			users,
-			hide: this.isHidden,
-			showOffline: this._showOffline
-		};
-	}
-
 	_getDisplayName(user) {
 		const displayNamePart = [user.name];
 		if (user.pronouns) displayNamePart.push(`(${user.pronouns})`);
