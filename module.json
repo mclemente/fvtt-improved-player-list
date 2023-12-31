@@ -15,6 +15,7 @@
 		}
 	],
 	"esmodules": ["scripts/module.js"],
+	"styles": ["styles/improved-player-list.css"],
 	"url": "This is auto replaced",
 	"manifest": "This is auto replaced",
 	"download": "This is auto replaced",

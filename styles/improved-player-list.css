@@ -1,0 +1,4 @@
+#players ol#player-list {
+    max-height: 154px;
+    overflow-y: auto;
+}
