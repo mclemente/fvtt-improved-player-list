@@ -14,43 +14,47 @@ class ImprovedPlayerList extends PlayerList {
 	}
 }
 
-class ImprovedUserConfig extends UserConfig {
-	getData(options = {}) {
-		const controlled = game.users.reduce((arr, u) => {
-			if ( u.character ) arr.push(u.character);
-			return arr;
-		}, []);
-		const actors = game.actors.filter(a => a.testUserPermission(this.object, "OBSERVER") && !controlled.includes(a.id));
-		const charname = this.object.isGM ? game.i18n.localize("USER.GM") : this.object.character?.name.split(" ")[0] || "";
-		const flag = this.object.flags["improved-player-list"]?.charname ?? "";
-		return {
-			user: this.object,
-			actors: actors,
-			options: this.options,
-			charname,
-			flag
-		};
+Hooks.once("init", () => {
+	CONFIG.ui.players = ImprovedPlayerList;
+})
+
+Hooks.once("ready", () => {
+	const userConfigList = Users.registeredSheets;
+	let userConfig = userConfigList[0];
+	if (userConfigList.length > 1) {
+		userConfig = userConfigList.find((uc) => Users.registeredSheets[0].name !== "UserConfig");
 	}
 
-	activateListeners(html) {
-		super.activateListeners(html);
-		if (!this.object.isGM) {
-			html.find(".actor").click((ev) => {
-				const input = html.find(`input[name="flags.improved-player-list.charname"]`);
-				const li = ev.currentTarget;
-				const actorId = li.getAttribute("data-actor-id");
-				const charname = game.actors.get(actorId)?.name;
-				input.attr("placeholder", charname.split(" ")[0]);
-			});
+	class ImprovedUserConfig extends userConfig {
+		// While the original getData isn't async, some system might change that (e.g. PF2e)
+		async getData(options = {}) {
+			const data = await super.getData(options);
+			const charname = this.object.isGM ? game.i18n.localize("USER.GM") : this.object.character?.name.split(" ")[0] || "";
+			const flag = this.object.flags["improved-player-list"]?.charname ?? "";
+			return {
+				...data,
+				charname,
+				flag
+			};
+		}
+
+		activateListeners(html) {
+			super.activateListeners(html);
+			if (!this.object.isGM) {
+				html.find(".actor").click((ev) => {
+					const input = html.find(`input[name="flags.improved-player-list.charname"]`);
+					const li = ev.currentTarget;
+					const actorId = li.getAttribute("data-actor-id");
+					const charname = game.actors.get(actorId)?.name;
+					input.attr("placeholder", charname.split(" ")[0]);
+				});
+			}
 		}
 	}
-}
 
-Hooks.once("i18nInit", () => {
-	CONFIG.ui.players = ImprovedPlayerList;
 	Users.registerSheet("improved-player-list", ImprovedUserConfig, {
 		makeDefault: true,
-		label: `Improved Player List: ${game.i18n.localize(`DOCUMENT.User`)}`
+		label: `Improved Player List: ${game.i18n.format("SHEETS.DefaultDocumentSheet", { document: game.i18n.localize("DOCUMENT.User") })}`
 	});
 });
 
