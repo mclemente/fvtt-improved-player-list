@@ -60,11 +60,12 @@ Hooks.once("ready", () => {
 
 Hooks.on("renderUserConfig", (userConfig, html, data) => {
 	const playerColorField = html.find(".form-group input[name='color']").closest(".form-group");
+	const { charname, flag } = data;
 	playerColorField.after(
 		`<div class="form-group">
 			<label>${game.i18n.localize("Name")}</label>
 			<div class="form-fields">
-				<input type="text" name="flags.improved-player-list.charname" placeholder="${data.charname}" value="${data.flag}">
+				<input type="text" name="flags.improved-player-list.charname" placeholder="${charname ?? ""}" value="${flag ?? ""}">
 			</div>
 		</div>`
 		);
