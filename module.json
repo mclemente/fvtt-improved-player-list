@@ -1,12 +1,10 @@
 {
 	"id": "improved-player-list",
-	"title": "Improved Player List",
-	"description": "",
-	"version": "This is auto replaced",
-	"manifestPlusVersion": "1.0.0",
+	"title": "Improved Players List",
+	"description": "Enhance the Players List by allowing custom nicknames.",
 	"compatibility": {
-		"minimum": 11.301,
-		"verified": 11
+		"minimum": 12,
+		"verified": 12
 	},
 	"authors": [
 		{
@@ -15,8 +13,8 @@
 		}
 	],
 	"esmodules": ["scripts/module.js"],
+	"version": "This is auto replaced",
 	"url": "This is auto replaced",
 	"manifest": "This is auto replaced",
-	"download": "This is auto replaced",
-	"readme": "README.md"
+	"download": "This is auto replaced"
 }
