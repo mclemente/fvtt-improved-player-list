@@ -1,20 +1,29 @@
 {
-	"id": "improved-player-list",
-	"title": "Improved Players List",
-	"description": "Enhance the Players List by allowing custom nicknames.",
-	"compatibility": {
-		"minimum": 12,
-		"verified": 12
-	},
-	"authors": [
-		{
-			"name": "Matheus Clemente",
-			"discord": "mclemente#5524"
-		}
-	],
-	"esmodules": ["scripts/module.js"],
-	"version": "This is auto replaced",
-	"url": "This is auto replaced",
-	"manifest": "This is auto replaced",
-	"download": "This is auto replaced"
+    "id": "improved-player-list",
+    "title": "Improved Players List",
+    "description": "Enhance the Players List by allowing custom nicknames.",
+    "compatibility": {
+        "minimum": 13,
+        "verified": 13
+    },
+    "authors": [
+        {
+            "name": "Matheus Clemente",
+            "discord": "mclemente#5524"
+        }
+    ],
+    "esmodules": [
+        "scripts/module.js"
+    ],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        }
+    ],
+    "version": "This is auto replaced",
+    "url": "This is auto replaced",
+    "manifest": "This is auto replaced",
+    "download": "This is auto replaced"
 }

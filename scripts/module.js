@@ -1,13 +1,13 @@
 Hooks.once("init", () => {
 	const origPlayerList = CONFIG.ui.players;
 	class ImprovedPlayerList extends origPlayerList {
-		_getDisplayName(user) {
+		_formatName(user) {
 			const displayNamePart = [user.name];
 			if (user.pronouns) displayNamePart.push(`(${user.pronouns})`);
 			const flag = user.flags["improved-player-list"]?.charname;
 			if (flag) displayNamePart.push(`[${flag}]`);
 			else if (user.isGM) displayNamePart.push(`[${game.i18n.localize("USER.GM")}]`);
-			else if (user.charname) displayNamePart.push(`[${user.charname}]`);
+			else if (user.charname) displayNamePart.push(`[${user.character.name}]`);
 			return displayNamePart.join(" ");
 		}
 	}
@@ -31,10 +31,15 @@ function createForm(charname, flag) {
 	input.placeholder = charname;
 	input.value = flag;
 
+	const hint = document.createElement("p");
+	hint.className = "hint";
+	hint.textContent = game.i18n.localize("IMPROVED-PLAYER-LIST.configure-name.hint");
+
 	// Append elements
 	formFields.appendChild(input);
 	formGroup.appendChild(label);
 	formGroup.appendChild(formFields);
+	formGroup.appendChild(hint);
 
 	return formGroup;
 }
