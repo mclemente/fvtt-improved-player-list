@@ -1,3 +1,7 @@
 {
-    "improved-player-list.configure-name.hint": "Name that will be displayed in the users list."
+    "IMPROVED-PLAYER-LIST": {
+        "configure-name": {
+            "hint": "Name that will be displayed in the user's list."
+        }
+    }
 }

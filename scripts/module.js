@@ -33,7 +33,7 @@ function createForm(charname, flag) {
 
 	const hint = document.createElement("p");
 	hint.className = "hint";
-	hint.textContent = game.i18n.localize("improved-player-list.configure-name.hint");
+	hint.textContent = game.i18n.localize("IMPROVED-PLAYER-LIST.configure-name.hint");
 
 	// Append elements
 	formFields.appendChild(input);
