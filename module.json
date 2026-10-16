@@ -4,7 +4,7 @@
     "description": "Enhance the Players List by allowing custom nicknames.",
     "compatibility": {
         "minimum": 13,
-        "verified": 13
+        "verified": 14
     },
     "authors": [
         {
